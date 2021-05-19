@@ -12,3 +12,8 @@ def getUsers():
 def getTodoItems():
     todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
     return [Todo(data) for data in todos]
+
+
+def getUserTodoItems(user):
+    todos = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos".format(user.id)).json()
+    return [Todo(data) for data in todos]
